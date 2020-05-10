@@ -6,3 +6,20 @@
     margin-top: 24px !important;
     float: right;
 }
+
+.data{
+    margin-top: 10px;
+}
+
+thead tr th{
+    background-color: rgb(221, 172, 217) !important;
+}
+
+th{
+    width: 50px;
+    text-align: center !important;
+}
+
+td{
+    text-align: center !important;
+}
