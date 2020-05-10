@@ -6,6 +6,11 @@ onDelete = () => {
     this.props.onDelete(this.props.customer.id);
 };
 
+onEdit = () => {
+    //console.log("customer on edit");
+    this.props.onEdit(this.props.customer);
+};
+
     render() {
         const {id, first_name, last_name, email} = this.props.customer;
         return (
@@ -14,7 +19,7 @@ onDelete = () => {
                 <td>{first_name} {last_name}</td>
                 <td>{email}</td>
                 <td>
-                    <button className="mini ui green button"> Edit</button>
+                    <button className="mini ui green button" onClick = {this.onEdit}> Edit</button>
                     <button className="mini ui pink button" onClick = {this.onDelete}> Delete </button>
                 </td>
             </tr>

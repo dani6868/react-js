@@ -8,6 +8,7 @@ import "./app.css";
 class App extends Component {
   state = {
     customers: [],
+    customer :{},
     url: "http://localhost/laravel-rest-api/public/api/customers"
   };
 
@@ -20,6 +21,11 @@ class App extends Component {
   onDelete = id => {
     //console.log("app", id);
     this.deleteCustomer(id);
+  };
+
+  onEdit = data => {
+    //console.log("app", data);
+    this.setState({customer: data});
   };
 
   deleteCustomer = async id => {
@@ -39,15 +45,19 @@ class App extends Component {
         <div className="ui fixed inverted menu">
           <div className="ui container">
             <a href="/#" className="header item">
-              React with Laravel API
+              React CRUD with Laravel API
       </a>
           </div>
         </div>
 
         <div className="ui main container">
-          <FormApp />
+          <FormApp customer = {this.state.customer}/>
           {this.state.loader ? <Loader /> : ""}
-          <CustomerList customers={this.state.customers} onDelete={this.onDelete} />
+          <CustomerList 
+          customers={this.state.customers} 
+          onDelete={this.onDelete} 
+          onEdit = {this.onEdit}
+          />
         </div>
       </div>
     );
