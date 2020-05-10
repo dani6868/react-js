@@ -11,15 +11,27 @@ class App extends Component {
     url: "http://localhost/laravel-rest-api/public/api/customers"
   };
 
-  getCustomers = async() => {
-    this.setState({loader: true});
+  getCustomers = async () => {
+    this.setState({ loader: true });
     const customers = await axios.get(this.state.url);
-    this.setState({customers: customers.data, loader: false});
+    this.setState({ customers: customers.data, loader: false });
   };
 
-  componentDidMount(){
+  onDelete = id => {
+    //console.log("app", id);
+    this.deleteCustomer(id);
+  };
+
+  deleteCustomer = async id => {
+    this.setState({loader: true});
+    await axios.delete(this.state.url + "/" + id);
+
+    this.getCustomers();
+  };
+  componentDidMount() {
     this.getCustomers();
   }
+
 
   render() {
     return (
@@ -34,8 +46,8 @@ class App extends Component {
 
         <div className="ui main container">
           <FormApp />
-          {this.state.loader ? <Loader/> : ""}
-          <CustomerList customers= {this.state.customers} />
+          {this.state.loader ? <Loader /> : ""}
+          <CustomerList customers={this.state.customers} onDelete={this.onDelete} />
         </div>
       </div>
     );

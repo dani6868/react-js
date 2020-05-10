@@ -3,7 +3,8 @@ import Customer from "./Customer";
 
 class CustomerList extends Component {
     onDelete = id => {
-        console.log("customer list" , id);
+        this.props.onDelete(id);
+        //console.log("customer list" , id);
     };
     render() {
         const customers = this.props.customers;
