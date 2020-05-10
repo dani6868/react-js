@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import Loader from "./Loader";
 import FormApp from "./FormApp";
 import CustomerList from "./CustomerList"
 import "./app.css";
@@ -23,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div clasName="ui fixed inverted menu">
+        <div className="ui fixed inverted menu">
           <div className="ui container">
             <a href="/#" className="header item">
               React with Laravel API
@@ -33,6 +34,7 @@ class App extends Component {
 
         <div className="ui main container">
           <FormApp />
+          {this.state.loader ? <Loader/> : ""}
           <CustomerList customers= {this.state.customers} />
         </div>
       </div>

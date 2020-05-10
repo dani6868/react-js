@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Customer from "./Customer";
 
-class Customers extends Component {
+class CustomerList extends Component {
+    onDelete = id => {
+        console.log("customer list" , id);
+    };
     render() {
         const customers = this.props.customers;
         return (
@@ -17,7 +20,10 @@ class Customers extends Component {
                 </thead>
                 <tbody>
                 { customers.map(customer => {
-                        return <Customer customer = {customer} key={customer.id}/>;
+                        return <Customer 
+                        customer = {customer} 
+                        key={customer.id} 
+                        onDelete={this.onDelete}/>;
                 })}
                 </tbody>
                 </table>
@@ -25,4 +31,4 @@ class Customers extends Component {
         );
     }
 }
-export default Customers;
+export default CustomerList;
