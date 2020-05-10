@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import FormApp from "./FormApp";
+import Customers from "./Customers"
+import "./app.css";
 
 class App extends Component {
   render() {
@@ -15,6 +17,7 @@ class App extends Component {
 
         <div className="ui main container">
           <FormApp />
+          <Customers />
         </div>
       </div>
     );
